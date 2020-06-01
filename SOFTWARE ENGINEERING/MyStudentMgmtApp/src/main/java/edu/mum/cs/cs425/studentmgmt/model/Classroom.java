@@ -16,10 +16,7 @@ public class Classroom {
 	
 	private String buildingName;
 	private String roomNumber;
-	
-	
-	
-	
+		
 	 //@OneToMany(cascade = CascadeType.ALL)
 	//@JoinColumn(name = "classroomId",nullable=true)
 	 @OneToMany(mappedBy = "clas",

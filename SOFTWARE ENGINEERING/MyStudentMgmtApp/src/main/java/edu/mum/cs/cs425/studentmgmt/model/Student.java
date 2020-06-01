@@ -18,8 +18,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 
-
-
 @Entity
 @Table(name = "students")
 public class Student {
