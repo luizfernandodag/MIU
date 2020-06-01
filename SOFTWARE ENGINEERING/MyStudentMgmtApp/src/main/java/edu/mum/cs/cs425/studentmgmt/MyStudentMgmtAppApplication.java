@@ -48,23 +48,28 @@ public class MyStudentMgmtAppApplication implements CommandLineRunner{
 				@NotBlank(message = "First name is required") String firstName, String middleName,
 				@NotBlank(message = "Last name is required") String lastName, Float cpga,
 				@NotBlank(message = "Last name is required") LocalDate dateOfEnrollment) */
+		//STUDENTS
 		Student s1 = new Student( "000-61-0001", "Anna", "Lynn", "Smith",3.45, LocalDate.of(2019,5,24));
 		Student s2 = new Student( "000-61-0002", "Luiz Fernando", "de Andraden", "Gadelha",3.45, LocalDate.of(2019,10,24));
-
+		//TRANSCRIPT
 		Transcript t = new Transcript("BS Computer Science");
 		s1.setTranscript(t);
 		s2.setTranscript(t);
+		//LIST OF STUDENTS
 		List<Student> listStudent = Arrays.asList(s1,s2);
-		
+		//CLASS ROOM
 		Classroom clas = new Classroom("McLaughlin building","M105",listStudent);
-		Classroom classSaved = this.saveClassRoom(clas);
+		s1.setClas(clas);
+		s2.setClas(clas);
+
 		
-		
-		
+		//SAVE DATA
+	
 		Student savedStudent = this.saveStudent(s1);
 		Student savedStudent2 = this.saveStudent(s2);
-		System.out.println(savedStudent);
-		System.out.println(savedStudent2);
+		Classroom classSaved = this.saveClassRoom(clas);
+		//System.out.println(savedStudent);
+		//System.out.println(savedStudent2);
 		System.out.println(classSaved);
 		
 		

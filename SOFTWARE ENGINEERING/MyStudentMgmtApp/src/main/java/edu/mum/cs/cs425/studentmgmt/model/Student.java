@@ -2,8 +2,12 @@ package edu.mum.cs.cs425.studentmgmt.model;
 
 import java.time.LocalDate;
 
+
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+
 
 
 @Entity
@@ -40,6 +46,19 @@ public class Student {
 	//@OneToOne
 	@JoinColumn(name="transcript", referencedColumnName="transcriptId",nullable=true)   
 	private Transcript transcript;
+	
+	
+//	//@Column(name="classroom")
+//	@ManyToOne(cascade = CascadeType.ALL)
+//   // @JoinColumn(name="classroom_id",nullable = true)
+
+	//@ManyToOne(cascade = CascadeType.ALL)
+	//@JoinColumn(name="published_by", referencedColumnName="publisherId",nullable=false)//FK collumn
+	//private Publisher publishedBy;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="clas", referencedColumnName="classroomId",nullable=true)//FK collumn
+	private Classroom clas;
+//
 	
 	
 	public Long getStudentId() {
@@ -139,6 +158,23 @@ public class Student {
 		this.dateOfEnrollment = dateOfEnrollment;
 		this.transcript = transcript;
 	}
+	
+	public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
+			@NotBlank(message = "First name is required") String firstName, String middleName,
+			@NotBlank(message = "Last name is required") String lastName, Double cpga,
+			@NotBlank(message = "Last name is required") LocalDate dateOfEnrollment,
+			Transcript transcript,
+			Classroom classroom) {
+		super();
+		this.studentNumber = studentNumber;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.cpga = cpga;
+		this.dateOfEnrollment = dateOfEnrollment;
+		this.transcript = transcript;
+		this.clas = classroom;
+	}
 
 
 	public Student() {
@@ -163,6 +199,19 @@ public class Student {
 	public void setTranscript(Transcript transcript) {
 		this.transcript = transcript;
 	}
+
+
+	public Classroom getClas() {
+		return clas;
+	}
+
+
+	public void setClas(Classroom clas) {
+		this.clas = clas;
+	}
+
+
+	
 	
 
 }

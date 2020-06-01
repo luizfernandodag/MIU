@@ -48,7 +48,7 @@ public class Book {
 	
 	//@ManyToOne(cascade = CascadeType.PERSIST)
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="published_by", referencedColumnName="publisherId",nullable=false)//FK collumn
+	@JoinColumn(name="published_by", referencedColumnName="publisherId",nullable=true)//FK collumn
 	private Publisher publishedBy;
 	
 	public Book() {

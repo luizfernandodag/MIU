@@ -11,7 +11,7 @@ public class Classroom {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	// @Column(name="CLASS_ID")
+	//@Column(name="classroom")
 	private Long classroomId;
 	
 	private String buildingName;
@@ -20,13 +20,16 @@ public class Classroom {
 	
 	
 	
-	 @OneToMany(cascade = CascadeType.ALL)
+	 //@OneToMany(cascade = CascadeType.ALL)
 	//@JoinColumn(name = "classroomId",nullable=true)
+	 @OneToMany(mappedBy = "clas",
+	 orphanRemoval = true,
+	    cascade = CascadeType.ALL)
 	private List<Student> studentsList;
 
 
 	public Classroom(Long classroomId, String buildingName, String roomNumber, List<Student> studentsList) {
-		super();
+	
 		this.classroomId = classroomId;
 		this.buildingName = buildingName;
 		this.roomNumber = roomNumber;
@@ -34,7 +37,7 @@ public class Classroom {
 	}
 	
 	public Classroom( String buildingName, String roomNumber, List<Student> studentsList) {
-		super();
+		
 
 		this.buildingName = buildingName;
 		this.roomNumber = roomNumber;
@@ -42,7 +45,7 @@ public class Classroom {
 	}
 	
 	public Classroom( String buildingName, String roomNumber) {
-		super();
+		
 
 		this.buildingName = buildingName;
 		this.roomNumber = roomNumber;
@@ -51,7 +54,7 @@ public class Classroom {
 
 
 	public Classroom() {
-		super();
+		
 	}
 
 
