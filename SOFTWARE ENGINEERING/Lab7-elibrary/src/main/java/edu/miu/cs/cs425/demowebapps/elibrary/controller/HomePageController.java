@@ -3,12 +3,12 @@ package edu.miu.cs.cs425.demowebapps.elibrary.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller 
+@Controller
 public class HomePageController {
-	
-	@GetMapping(value = {  "/","/elibrary", "elibrary/home"})
-	public String diplayHomePage() {
-		return "home/index";
-	}
+
+    @GetMapping(value = {"/", "/elibrary", "elibrary/home"})
+    public String diplayHomePage() {
+        return "home/index";
+    }
 
 }

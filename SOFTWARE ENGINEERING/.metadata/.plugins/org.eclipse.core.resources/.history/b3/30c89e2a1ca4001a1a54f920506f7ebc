@@ -1,0 +1,5 @@
+package edu.miu.cs.cs425.bookmgmt.repository;
+
+public interface publisherRepository extends CrudRepository<Publisher,Long>{
+
+}

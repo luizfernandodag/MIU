@@ -14,38 +14,67 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import edu.miu.cs.cs425.bookmgmt.model.Book;
 import edu.miu.cs.cs425.bookmgmt.model.Publisher;
 
-import edu.miu.cs.cs425.bookmgmt.repository.BookRepository;
+import edu.miu.cs.cs425.bookmgmt.repository.*;
 
 @SpringBootApplication
 public class MyBooksMgmtAppApplication implements CommandLineRunner {
-	
-	@Autowired
-	private BookRepository bookRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(MyBooksMgmtAppApplication.class, args);
-	}
+    @Autowired
+    private BookRepository bookRepository;
 
-	@Override
-	public void run(String... args) throws Exception {
-		//Book book = new Book("123-4567890","Principles of Software Engineering", LocalDate.of(1999, 1, 10));
-		Publisher p1 = new Publisher(null,"Pearsons");
-		Book book1 = new Book("123-4567890","Principles of Software Engineering", LocalDate.of(1999, 1, 10),p1);
-		Book book2 = new Book("123-4567891","Introduction to  Engineering", LocalDate.of(1999, 2, 10),p1);
-		List<Book> books = Arrays.asList(book1,book2);
-		p1.setBooksPublished(books);
+    @Autowired
+    private publisherRepository publisherRepository;
 
-		Book savedBook = saveBook(book1);
-		System.out.println(savedBook);
-		
-		Book savedBook2 = saveBook(book2);
-		System.out.println(savedBook2);
-		
-	}
-	@Transactional
-	private Book saveBook(Book book)
-	{
-		return bookRepository.save(book);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MyBooksMgmtAppApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        //Book book = new Book("123-4567890","Principles of Software Engineering", LocalDate.of(1999, 1, 10));
+        Publisher p1 = new Publisher(null, "Pearsons");
+        Book book1 = new Book("123-4567890", "Principles of Software Engineering", LocalDate.of(1999, 1, 10), p1);
+        Book book2 = new Book("123-4567891", "Introduction to  Engineering", LocalDate.of(1999, 2, 10), p1);
+        List<Book> books = Arrays.asList(book1, book2);
+        p1.setBooksPublished(books);
+
+        Publisher savedPublished1 = this.savePublisher(p1);
+        System.out.println(savedPublished1);
+
+//		Book book3 = new Book("123-12312342","Advanced Software design",LocalDate.of(2015, 1, 1),savedPublished);
+//		
+//		
+//		Book savedBook3 = this.saveBook(book3);
+//		System.out.println(savedBook3);
+
+        Publisher p2 = new Publisher(null, "John e Wiley");
+        Publisher savedPublisher2 = this.savePublisher(p2);
+        System.out.println(savedPublisher2);
+
+        Book book4 = new Book("1234-12234", "Modern enterprise software", LocalDate.of(2000, 1, 1), p2);
+        saveBook(book4);
+
+
+        Iterable<Book> allBooks = this.bookRepository.findAll();
+        for (Book b : allBooks) {
+            System.out.println(b);
+        }
+//		Book savedBook = saveBook(book1);
+//		System.out.println(savedBook);
+//		
+//		Book savedBook2 = saveBook(book2);
+//		System.out.println(savedBook2);
+
+    }
+
+    @Transactional
+    private Book saveBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    @Transactional
+    private Publisher savePublisher(Publisher pub) {
+        return publisherRepository.save(pub);
+    }
 
 }

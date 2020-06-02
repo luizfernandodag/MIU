@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+/home/luiz/Documents/EUA/MIUREP/SOFTWARE ENGINEERING/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes

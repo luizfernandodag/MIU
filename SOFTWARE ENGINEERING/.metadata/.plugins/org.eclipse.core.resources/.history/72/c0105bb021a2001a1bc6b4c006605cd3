@@ -1,0 +1,13 @@
+package edu.miu.cs.cs425.bookmgmt.model;
+
+import java.time.LocalDate;
+
+@Entity
+public class Book {
+	private Long bookId;
+	private String title;
+	private String isbn;
+	private LocalDate datePublished;
+	
+
+}

@@ -1,0 +1,43 @@
+package edu.miu.cs.cs425.bookmgmt.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+public class Publisher {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer publisherId;
+	@NotBlank(message = "Name is required")
+	String name;
+	public Publisher(Integer publisherId, @NotBlank(message = "Name is required") String name) {
+		super();
+		this.publisherId = publisherId;
+		this.name = name;
+	}
+	public Publisher() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "Publisher [publisherId=" + publisherId + ", name=" + name + "]";
+	}
+	public Integer getPublisherId() {
+		return publisherId;
+	}
+	public void setPublisherId(Integer publisherId) {
+		this.publisherId = publisherId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+
+}

@@ -1,0 +1,7 @@
+package edu.miu.cs.cs425.bookmgmt.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface BookRepository extends CrudRepository<T, ID> {
+
+}

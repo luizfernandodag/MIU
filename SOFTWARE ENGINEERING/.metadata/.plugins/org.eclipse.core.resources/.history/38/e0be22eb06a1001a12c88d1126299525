@@ -1,0 +1,5 @@
+package edu.miu.cs.cs425.springwebappdemo.MyFirstSpringWebApp.controller;
+
+public class HomePageController {
+
+}

@@ -3,7 +3,6 @@ package edu.mum.cs.cs425.studentmgmt.model;
 import java.time.LocalDate;
 
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,195 +20,191 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "students")
 public class Student {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long studentId;
-	
-	@NotBlank(message = "studentNumber (NNN-NN-NNNN format)")
-	private String studentNumber;
-	@NotBlank(message = "First name is required")
-	private String firstName;
-	//OPTIONAL
-	private String middleName;
-	
-	@NotBlank(message = "Last name is required")
-	private String lastName;
-	//OPTIONAL
-	private Double cpga;
-	@NotBlank(message = "Last name is required")
-	private LocalDate dateOfEnrollment;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	//@OneToOne
-	@JoinColumn(name="transcript", referencedColumnName="transcriptId",nullable=true)   
-	private Transcript transcript;
-	
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long studentId;
+
+    @NotBlank(message = "studentNumber (NNN-NN-NNNN format)")
+    private String studentNumber;
+    @NotBlank(message = "First name is required")
+    private String firstName;
+    //OPTIONAL
+    private String middleName;
+
+    @NotBlank(message = "Last name is required")
+    private String lastName;
+    //OPTIONAL
+    private Double cpga;
+    @NotBlank(message = "Last name is required")
+    private LocalDate dateOfEnrollment;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    //@OneToOne
+    @JoinColumn(name = "transcript", referencedColumnName = "transcriptId", nullable = true)
+    private Transcript transcript;
+
+
 //	//@Column(name="classroom")
 //	@ManyToOne(cascade = CascadeType.ALL)
 //   // @JoinColumn(name="classroom_id",nullable = true)
 
-	//@ManyToOne(cascade = CascadeType.ALL)
-	//@JoinColumn(name="published_by", referencedColumnName="publisherId",nullable=false)//FK collumn
-	//private Publisher publishedBy;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="clas", referencedColumnName="classroomId",nullable=true)//FK collumn
-	private Classroom clas;
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name="published_by", referencedColumnName="publisherId",nullable=false)//FK collumn
+    //private Publisher publishedBy;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "clas", referencedColumnName = "classroomId", nullable = true)//FK collumn
+    private Classroom clas;
 //
-	
-	
-	public Long getStudentId() {
-		return studentId;
-	}
 
 
-	public void setStudentId(Long studentId) {
-		this.studentId = studentId;
-	}
+    public Long getStudentId() {
+        return studentId;
+    }
 
 
-	public String getStudentNumber() {
-		return studentNumber;
-	}
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
 
 
-	public void setStudentNumber(String studentNumber) {
-		this.studentNumber = studentNumber;
-	}
+    public String getStudentNumber() {
+        return studentNumber;
+    }
 
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
+    }
 
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
 
-	public String getMiddleName() {
-		return middleName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
+    public String getMiddleName() {
+        return middleName;
+    }
 
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
 
-	public Double getCpga() {
-		return cpga;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
 
-	public void setCpga(Double cpga) {
-		this.cpga = cpga;
-	}
+    public Double getCpga() {
+        return cpga;
+    }
 
 
-	public LocalDate getDateOfEnrollment() {
-		return dateOfEnrollment;
-	}
+    public void setCpga(Double cpga) {
+        this.cpga = cpga;
+    }
 
 
-	public void setDateOfEnrollment(LocalDate dateOfEnrollment) {
-		this.dateOfEnrollment = dateOfEnrollment;
-	}
+    public LocalDate getDateOfEnrollment() {
+        return dateOfEnrollment;
+    }
 
 
-	public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
-			@NotBlank(message = "First name is required") String firstName, String middleName,
-			@NotBlank(message = "Last name is required") String lastName, Double cpga,
-			@NotBlank(message = "Last name is required") LocalDate dateOfEnrollment) {
-		super();
-		this.studentNumber = studentNumber;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.cpga = cpga;
-		this.dateOfEnrollment = dateOfEnrollment;
-	}
-	
-	public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
-			@NotBlank(message = "First name is required") String firstName, String middleName,
-			@NotBlank(message = "Last name is required") String lastName, Double cpga,
-			@NotBlank(message = "Last name is required") LocalDate dateOfEnrollment,
-			Transcript transcript) {
-		super();
-		this.studentNumber = studentNumber;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.cpga = cpga;
-		this.dateOfEnrollment = dateOfEnrollment;
-		this.transcript = transcript;
-	}
-	
-	public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
-			@NotBlank(message = "First name is required") String firstName, String middleName,
-			@NotBlank(message = "Last name is required") String lastName, Double cpga,
-			@NotBlank(message = "Last name is required") LocalDate dateOfEnrollment,
-			Transcript transcript,
-			Classroom classroom) {
-		super();
-		this.studentNumber = studentNumber;
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.cpga = cpga;
-		this.dateOfEnrollment = dateOfEnrollment;
-		this.transcript = transcript;
-		this.clas = classroom;
-	}
+    public void setDateOfEnrollment(LocalDate dateOfEnrollment) {
+        this.dateOfEnrollment = dateOfEnrollment;
+    }
 
 
-	public Student() {
-		super();
-	}
+    public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
+                   @NotBlank(message = "First name is required") String firstName, String middleName,
+                   @NotBlank(message = "Last name is required") String lastName, Double cpga,
+                   @NotBlank(message = "Last name is required") LocalDate dateOfEnrollment) {
+        super();
+        this.studentNumber = studentNumber;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.cpga = cpga;
+        this.dateOfEnrollment = dateOfEnrollment;
+    }
+
+    public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
+                   @NotBlank(message = "First name is required") String firstName, String middleName,
+                   @NotBlank(message = "Last name is required") String lastName, Double cpga,
+                   @NotBlank(message = "Last name is required") LocalDate dateOfEnrollment,
+                   Transcript transcript) {
+        super();
+        this.studentNumber = studentNumber;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.cpga = cpga;
+        this.dateOfEnrollment = dateOfEnrollment;
+        this.transcript = transcript;
+    }
+
+    public Student(@NotBlank(message = "studentNumber (NNN-NN-NNNN format)") String studentNumber,
+                   @NotBlank(message = "First name is required") String firstName, String middleName,
+                   @NotBlank(message = "Last name is required") String lastName, Double cpga,
+                   @NotBlank(message = "Last name is required") LocalDate dateOfEnrollment,
+                   Transcript transcript,
+                   Classroom classroom) {
+        super();
+        this.studentNumber = studentNumber;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.cpga = cpga;
+        this.dateOfEnrollment = dateOfEnrollment;
+        this.transcript = transcript;
+        this.clas = classroom;
+    }
 
 
-
-	@Override
-	public String toString() {
-		return "Student [studentId=" + studentId + ", studentNumber=" + studentNumber + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + ", cpga=" + cpga + ", dateOfEnrollment="
-				+ dateOfEnrollment + "]";
-	}
+    public Student() {
+        super();
+    }
 
 
-	public Transcript getTranscript() {
-		return transcript;
-	}
+    @Override
+    public String toString() {
+        return "Student [studentId=" + studentId + ", studentNumber=" + studentNumber + ", firstName=" + firstName
+                + ", middleName=" + middleName + ", lastName=" + lastName + ", cpga=" + cpga + ", dateOfEnrollment="
+                + dateOfEnrollment + "]";
+    }
 
 
-	public void setTranscript(Transcript transcript) {
-		this.transcript = transcript;
-	}
+    public Transcript getTranscript() {
+        return transcript;
+    }
 
 
-	public Classroom getClas() {
-		return clas;
-	}
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
+    }
 
 
-	public void setClas(Classroom clas) {
-		this.clas = clas;
-	}
+    public Classroom getClas() {
+        return clas;
+    }
 
 
-	
-	
+    public void setClas(Classroom clas) {
+        this.clas = clas;
+    }
+
 
 }

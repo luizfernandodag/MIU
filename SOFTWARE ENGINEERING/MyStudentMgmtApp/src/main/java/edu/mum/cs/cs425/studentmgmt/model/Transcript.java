@@ -9,42 +9,41 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "transcripts")
 public class Transcript {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long transcriptId;
-	
-	private String degreeTitle;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long transcriptId;
 
-	public Transcript(String degreeTitle) {
-		super();
-		this.degreeTitle = degreeTitle;
-	}
+    private String degreeTitle;
 
-	public Transcript() {
-		super();
-	}
+    public Transcript(String degreeTitle) {
+        super();
+        this.degreeTitle = degreeTitle;
+    }
 
-	public Long getTranscriptId() {
-		return transcriptId;
-	}
+    public Transcript() {
+        super();
+    }
 
-	public void setTranscriptId(Long transcriptId) {
-		this.transcriptId = transcriptId;
-	}
+    public Long getTranscriptId() {
+        return transcriptId;
+    }
 
-	public String getDegreeTitle() {
-		return degreeTitle;
-	}
+    public void setTranscriptId(Long transcriptId) {
+        this.transcriptId = transcriptId;
+    }
 
-	public void setDegreeTitle(String degreeTitle) {
-		this.degreeTitle = degreeTitle;
-	}
+    public String getDegreeTitle() {
+        return degreeTitle;
+    }
 
-	@Override
-	public String toString() {
-		return "Transcript [transcriptId=" + transcriptId + ", degreeTitle=" + degreeTitle + "]";
-	}
-	
-	
+    public void setDegreeTitle(String degreeTitle) {
+        this.degreeTitle = degreeTitle;
+    }
+
+    @Override
+    public String toString() {
+        return "Transcript [transcriptId=" + transcriptId + ", degreeTitle=" + degreeTitle + "]";
+    }
+
 
 }
