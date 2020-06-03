@@ -23,8 +23,22 @@
                 </span>
     </div>
 
+    <!-- Search panel -->
+    <form id="searchStudentForm" method="get" action="/eregistrar/student/search">
+        <div style="margin-top:1em;" class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchString" name="searchString" placeholder="Enter a string to search for students" th:value="${searchString}" autofocus />
+                    <div class="input-group-append">
+                        <button id="btnSubmit" type="submit" class="btn btn-outline-success">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
-    <p>&nbsp;</p>
+
+    <div style="font-size: 1em">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -34,34 +48,71 @@
             <th scope="col">Last Name</th>
             <th scope="col">CPGA</th>
             <th scope="col">Date of Enrollment</th>
+            <th scope="col">International Student</th>
 
         </tr>
         </thead>
         <tbody>
 
-        <tr th:each="student, iterStat : ${students}" th:onclick="@{document.location='#'}">
+        <tr th:each="student, iterStat : ${students}">
             <th scope="row" th:text="${iterStat.count}+'.'">#</th>
+            <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
+
             <td th:text="${student.firstName}"></td>
             <td th:text="${student.middleName}"></td>
             <td th:text="${student.lastName}"></td>
             <td th:text="${student.cpga}"></td>
             <td th:text="${student.dateOfEnrollment}"></td>
+            <td th:text="${student.isInternational}"></td>
+            <td><a th:href="@{'/eregistrar/student/edit/{studentId}'(studentId=${student.studentId})}">Edit</a></td>
+            <td>
+                <a th:href="@{'/eregistrar/student/delete/{studentId}'(studentId=${student.studentId})}">Delete</a>
+
+<!--                <a data-toggle="modal" data-target="#confirmDeleteBookModal" th:href="@{'/eregistrar/student/delete/' + ${student.studentId}}">Delete</a>-->
+                <!--                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">-->
+                <!--                            Launch demo modal-->
+                <!--                        </button>-->
+            </td>
+
+
         </tr>
+        <tr th:if="${booksCount < 1}">
+            <td colspan="8" th:align="center">No books found</td>
+        </tr>
+        </tbody>
+
         </tbody>
     </table>
 </div>
 
-<div th:replace="fragments/footer :: footer"></div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteBookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you wish to delete this book data?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div th:replace="fragments/footer :: footer"></div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 </body>
 </html>

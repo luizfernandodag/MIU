@@ -19,10 +19,10 @@ public class Classroom {
 
     //@OneToMany(cascade = CascadeType.ALL)
     //@JoinColumn(name = "classroomId",nullable=true)
-    @OneToMany(mappedBy = "clas",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
-    private List<Student> studentsList;
+//    @OneToMany(mappedBy = "clas",
+//            orphanRemoval = true,
+//            cascade = CascadeType.ALL)
+//    private List<Student> studentsList;
 
 
     public Classroom(Long classroomId, String buildingName, String roomNumber, List<Student> studentsList) {
@@ -30,28 +30,35 @@ public class Classroom {
         this.classroomId = classroomId;
         this.buildingName = buildingName;
         this.roomNumber = roomNumber;
-        this.studentsList = studentsList;
-    }
-
-    public Classroom(String buildingName, String roomNumber, List<Student> studentsList) {
-
-
-        this.buildingName = buildingName;
-        this.roomNumber = roomNumber;
-        this.studentsList = studentsList;
-    }
-
-    public Classroom(String buildingName, String roomNumber) {
-
-
-        this.buildingName = buildingName;
-        this.roomNumber = roomNumber;
 
     }
+
+
+//    public Classroom(String buildingName, String roomNumber, List<Student> studentsList) {
+//
+//
+//        this.buildingName = buildingName;
+//        this.roomNumber = roomNumber;
+//        this.studentsList = studentsList;
+//    }
+//
+//    public Classroom(String buildingName, String roomNumber) {
+//
+//
+//        this.buildingName = buildingName;
+//        this.roomNumber = roomNumber;
+//
+//    }
 
 
     public Classroom() {
 
+    }
+
+    public Classroom(Long classroomId, String buildingName, String roomNumber) {
+        this.classroomId = classroomId;
+        this.buildingName = buildingName;
+        this.roomNumber = roomNumber;
     }
 
 
@@ -85,24 +92,17 @@ public class Classroom {
     }
 
 
-    public List<Student> getStudentsList() {
-        return studentsList;
-    }
+//    public List<Student> getStudentsList() {
+//        return studentsList;
+//    }
+//
+//
+//    public void setStudentsList(List<Student> studentsList) {
+//        this.studentsList = studentsList;
+//    }
 
 
-    public void setStudentsList(List<Student> studentsList) {
-        this.studentsList = studentsList;
-    }
 
-
-    @Override
-    public String toString() {
-        if (this.getBuildingName() != null && this.getRoomNumber() != null && this.getStudentsList() != null)
-            return "Classroom [classroomId=" + classroomId + ", buildingName=" + buildingName + ", roomNumber=" + roomNumber
-                    + ", studentsList=" + studentsList + "]";
-        else
-            return "NULL VALUES";
-    }
 
 
 }

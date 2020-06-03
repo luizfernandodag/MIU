@@ -36,7 +36,10 @@
         <tr th:each="publisher, iterStat : ${publishers}" th:onclick="@{document.location='#'}">
             <th scope="row" th:text="${iterStat.count}+'.'">#</th>
             <td th:text="${publisher.name}"></td>
-            <td th:text="${publisher.address}"></td>
+            <td >
+                <span> th:text="${publisher.address.houseNumber} }"</span>
+            </td>
+
         </tr>
         </tbody>
     </table>

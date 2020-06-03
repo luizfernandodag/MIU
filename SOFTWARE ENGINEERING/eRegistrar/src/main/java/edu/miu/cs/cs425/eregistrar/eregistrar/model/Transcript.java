@@ -1,17 +1,14 @@
 package edu.miu.cs.cs425.eregistrar.eregistrar.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "transcripts")
 public class Transcript {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transcriptId;
+
+    private Integer transcriptId;
 
     private String degreeTitle;
 
@@ -24,11 +21,11 @@ public class Transcript {
         super();
     }
 
-    public Long getTranscriptId() {
+    public Integer getTranscriptId() {
         return transcriptId;
     }
 
-    public void setTranscriptId(Long transcriptId) {
+    public void setTranscriptId(Integer transcriptId) {
         this.transcriptId = transcriptId;
     }
 
