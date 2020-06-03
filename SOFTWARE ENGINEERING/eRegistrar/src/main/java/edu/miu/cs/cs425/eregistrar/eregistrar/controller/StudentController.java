@@ -57,6 +57,8 @@ public class StudentController {
     @GetMapping(value = {"/eregistrar/student/edit/{studentId}","/student/edit/{studentId}"})
     public String editStudent(@PathVariable Integer studentId, Model model) {
         Student student = studentService.getStudentById  (studentId);
+        System.out.println("edit");
+        System.out.println(student.getIsInternational());
         if (student != null) {
             model.addAttribute("student", student);
             return "student/edit";
@@ -71,7 +73,10 @@ public class StudentController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "student/edit";
         }
+        System.out.println("update");
+        System.out.println(student.getIsInternational());
         student = studentService.saveStudent(student);
+        System.out.println(student.getIsInternational());
         return "redirect:/eregistrar/student/list";
     }
 
