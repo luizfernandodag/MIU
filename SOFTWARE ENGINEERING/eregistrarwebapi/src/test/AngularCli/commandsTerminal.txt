@@ -1,0 +1,21 @@
+  933  sudo dpkg --remove --force-remove-reinstreq  libdbusmenu-gtk4:amd64
+  934  sudo apt-get install  libdbusmenu-gtk4:amd64
+  935  sudo apt install -f
+  936  sudo apt-get install npm
+  937  sudo apt install -f
+  938  sudo update
+  939  sudo apt-get update
+  940  sudo apt-get install npm
+  941  sudo apt install libssl1.0-dev
+  942  sudo apt install nodejs-dev
+  943  sudo apt-get install libssl1.0-dev
+  944  sudo apt install nodejs-dev
+  945  sudo apt install node-gyp
+  946  sudo apt-get install npm
+  947  history
+  948  history tail 20
+  949  history -tail 20
+  950  history -t 20
+  951  history -t 
+  952  history 20
+  953  history 21 > commandsTerminal.txt

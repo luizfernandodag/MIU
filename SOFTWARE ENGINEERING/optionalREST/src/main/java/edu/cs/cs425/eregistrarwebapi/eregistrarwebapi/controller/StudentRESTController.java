@@ -3,17 +3,13 @@ package edu.cs.cs425.eregistrarwebapi.eregistrarwebapi.controller;
 import edu.cs.cs425.eregistrarwebapi.eregistrarwebapi.impl.StudentService;
 import edu.cs.cs425.eregistrarwebapi.eregistrarwebapi.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 
@@ -21,7 +17,7 @@ import java.util.List;
 //@CrossOrigin(origins = "*",allowCredentials = "*")
 //@CrossOrigin(allowCredentials = "*")
 @RequestMapping(value = "/eregistrar/api/student", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = "*",allowedHeaders = "*")
+@CrossOrigin
 public class StudentRESTController {
 
     private StudentService studentService;
@@ -40,14 +36,11 @@ public class StudentRESTController {
         return studentService.getAllStudents();
     }
 
-    //@RequestMapping(value = "/register", method = RequestMethod.POST)
-//"application/x-www-form-urlencoded;charset=UTF-8"
-    //@PostMapping(value= "/register", method = RequestMethod.POST, consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @PostMapping(value= "/register")
-    public Student registerNewStudent( @RequestBody  Student student)
-    {   Student createdStudent = this.studentService.registerNewStudent(student);
 
-        return createdStudent;
+    @PostMapping(value= "/register")
+    public Student registerNewStudent(@Valid @RequestBody Student student)
+    {
+        return this.studentService.registerNewStudent(student);
     }
     @PutMapping(value = "/update/{studentId}")
     public Student updateStudent(@Valid @RequestBody  Student editedStudent,@PathVariable Integer studentId)

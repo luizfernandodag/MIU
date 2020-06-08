@@ -1,6 +1,6 @@
-<header th:fragment="header">
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a style="padding-right: 2em;" class="navbar-brand" href="/eregistrar/home">eRegistrar : : : a
+        <a style="padding-right: 2em;" class="navbar-brand" href="../index.html">eRegistrar : : : a
             Student-Class Management system</a>
         <!--<span style="color: #ffffff;"> &nbsp; | &nbsp;</span>-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -11,13 +11,13 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
-                    <a class="nav-link" href="/eregistrar/student/list">Students</a>
+                    <a class="nav-link" href="student/list">Students</a>
                 </li>
                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em;">
-                    <a class="nav-link" href="/eregistrar/classroom/list">Classroom</a>
+                    <a class="nav-link" href="student/list">Classroom</a>
                 </li>
                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em;">
-                    <a class="nav-link" href="/eregistrar/transcript/list">Transcript</a>
+                    <a class="nav-link" href="student/list">Transcript</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
