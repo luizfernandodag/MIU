@@ -23,7 +23,8 @@ $(document).ready(
 					lastName: $("#lastName").val(),
 					cpga: $("#cpga").val(),
 					transcript: $("#transcript").val(),
-					dateOfEnrollment: $("#dateOfEnrollment").val()
+					dateOfEnrollment: $("#dateOfEnrollment").val(),
+					isInternational: $("#isInternational").val()
 
 				}
 			
